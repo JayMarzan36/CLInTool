@@ -1,0 +1,4 @@
+# Ignore the .vscode task folder
+.vscode/
+
+.CLInTool.egg-info/
