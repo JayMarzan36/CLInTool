@@ -1,16 +1,18 @@
 import os
-import argparse
-import shutil
 
 def createProject(name : str, lang : str, git : bool, venv : bool) -> None:
     projectPath = os.path.join(os.getcwd(), name)
     os.makedirs(projectPath, exist_ok=True)
     
     templates = {
-        "python": [],
-        "c" : [],
-        "java" : []
+        "python": ["main.py", "requirements.txt"],
+        "c" : ["main.c", "requirements.txt"],
+        "java" : ["main.java", "requirements.txt"]
     }
+    
+    os.makedirs(os.path.join(projectPath, "src"), exist_ok=True)
+    
+    projectPath = os.path.join(projectPath, "src")
     
     for file in templates.get(lang, []):
         with open(os.path.join(projectPath, file), "w") as f:
@@ -22,7 +24,7 @@ def createProject(name : str, lang : str, git : bool, venv : bool) -> None:
     if venv and lang == "python":
         os.system(f"python -m venv {os.path.join(projectPath, 'venv')}")
     
-    print(f"Project {name} created at {projectPath}")
+    print(f"Project \033[92m{name}\033[0m created at \033[92m{projectPath}\033[0m")
 
 def interactiveMode() -> None:
     name = input("Enter project name: ")
