@@ -1,6 +1,6 @@
 import argparse
 
-from command import projectGen
+from .projectGen import projectGen 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="CLI Tool")
@@ -22,7 +22,7 @@ def main() -> None:
     
     
     if args.command == "projectGen":
-        projectGen.main(args)
+        projectGen.main()
     else:
         parser.print_help()
         

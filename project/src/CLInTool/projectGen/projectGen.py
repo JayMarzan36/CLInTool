@@ -33,18 +33,8 @@ def interactiveMode() -> None:
     createProject(name, lang, git, venv)
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="CLI Tool")
-    parser.add_argument("-n", "--name", help="Project name")
-    parser.add_argument("-l", "--lang", help="Project language")
-    parser.add_argument("--git", help="Initialize git repository", action="store_true")
-    parser.add_argument("--venv", help="Create virtual environment", action="store_true")
-    
-    args = parser.parse_args()
-    
-    if args.name and args.lang:
-        createProject(args.name, args.lang, args.git, args.venv)
-    else:
-        interactiveMode()
+    interactiveMode()
+        
         
 if __name__ == "__main__":
     main()
