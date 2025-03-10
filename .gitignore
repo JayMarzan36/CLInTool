@@ -1,4 +1,6 @@
 # Ignore the .vscode task folder
 .vscode/
 
-.CLInTool.egg-info/
+*.egg-info/
+
+.__pycache__/
