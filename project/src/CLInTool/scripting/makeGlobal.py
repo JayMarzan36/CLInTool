@@ -3,6 +3,17 @@ from .scriptGen import getPlatform
 
 
 def makeScriptGlobal(scriptName: str) -> None:
+    """_summary_
+
+    Make a script global
+
+    Args:
+        :param scriptName: The name of the script
+
+    Returns:
+        :return: None
+    """
+
     currentPlatform = getPlatform()
 
     platforms = {

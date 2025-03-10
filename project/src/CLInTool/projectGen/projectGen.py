@@ -2,6 +2,18 @@ import os
 
 
 def createProject(name: str, lang: str, git: bool, venv: bool) -> None:
+    """_summary_
+
+    Args:
+        name (str): _description_
+        lang (str): _description_
+        git (bool): _description_
+        venv (bool): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    
     projectPath = os.path.join(os.getcwd(), name)
     os.makedirs(projectPath, exist_ok=True)
 
@@ -61,6 +73,9 @@ def interactiveMode() -> None:
 
 
 def main() -> None:
+    """
+    Main function that calls interactiveMode
+    """
     interactiveMode()
 
 
