@@ -1,9 +1,6 @@
-# CLInTool
-Homemade cli tool
-
-
+# clint
+My homemade CLI-n-Tool or clint
 
 ## What can it do?
 *   Make project templates
-*   Make templates for scripts, depending on the platform
-*   Have built in scripts
+*   Make templates for scripts, like .sh and .bat by detecting the current os
