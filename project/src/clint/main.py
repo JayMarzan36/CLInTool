@@ -10,7 +10,7 @@ def main() -> None:
     subparser = parser.add_subparsers(dest="command")
 
     # projectGen
-    projectGenParser = subparser.add_parser("projectGen")
+    projectGenParser = subparser.add_parser("pg")
     projectGenParser.add_argument("-n", "--name", help="Project name")
     projectGenParser.add_argument(
         "-l", "--lang", choices=["python", "c", "java"], help="Project language"
@@ -23,28 +23,28 @@ def main() -> None:
     )
 
     # scriptGen
-    scriptGenParser = subparser.add_parser("scriptGen")
+    scriptGenParser = subparser.add_parser("sg")
     scriptGenParser.add_argument("-n", "--name", help="Script name")
 
     # makeGlobal
-    makeGlobalParser = subparser.add_parser("makeGlobal")
+    makeGlobalParser = subparser.add_parser("mg")
     makeGlobalParser.add_argument("-n", "--name", help="Script name")
 
     args = parser.parse_args()
 
-    if args.command == "projectGen":
+    if args.command == "pg":
         if args.name and args.lang:
             projectGen.createProject(args.name, args.lang, args.git, args.venv)
         else:
             projectGen.main()
 
-    elif args.command == "scriptGen":
+    elif args.command == "sg":
         if args.name:
             scriptGen.scriptGen(args.name)
         else:
             scriptGen.interactiveMode()
 
-    elif args.command == "makeGlobal":
+    elif args.command == "mg":
         if args.name:
             makeGlobal.makeScriptGlobal(args.name)
         else:
