@@ -1,0 +1,15 @@
+{
+    "files": [
+        {
+            "numOfFiles" : 2
+        },
+        {
+            "name": "main.py",
+            "content": "def main() -> None:\n   pass\n\nif __name__ == '__main__':\n    main()"
+        },
+        {
+            "name": "requirements.txt",
+            "content": "requirements of project"
+        }
+    ]
+}

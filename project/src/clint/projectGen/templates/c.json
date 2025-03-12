@@ -1,0 +1,15 @@
+{
+    "files": [
+        {
+            "numOfFiles" : 2
+        },
+        {
+            "name": "main.c",
+            "content": "#include <stdio.h>\n\nint main() {\n    return 0;\n}"
+        },
+        {
+            "name": "requirements.txt",
+            "content": "requirements of project"
+        }
+    ]
+}
