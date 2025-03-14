@@ -13,7 +13,7 @@ As of version `0.3.0` there are 4 main arguments
 If none of the arguments are given the additional arguments, the user will be prompted for them instead.
 
 ### mp
-mp or project generation, is the keyword for generating projects using user defined templates
+mp or make project, is the keyword for generating projects using user defined templates
 
 #### mp additional args
 *  -n, name
@@ -23,7 +23,7 @@ mp or project generation, is the keyword for generating projects using user defi
 
 
 ### ms
-ms or script generation, is the keyword for generating a template script file (.sh or .bat depending on operating system).
+ms or make script, is the keyword for generating a template script file (.sh or .bat depending on operating system).
 
 #### ms additional args
 * -n, name
