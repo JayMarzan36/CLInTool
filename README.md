@@ -37,7 +37,12 @@ mg or make global, makes a script of choice global by adding to either system $P
 ### mt
 mt or make template, allows the user to make a template either for projects or scripts. This all happens in the command line for now (as of version `0.3.0`). 
 
-For future feature, im planning on adding a argument that allows the user to "upload" their own template so they don't have to use the command line.
+**For future feature, im planning on adding a argument that allows the user to "upload" their own template so they don't have to use the command line.**
+
+#### mt additional args
+* -n, name
+* -c, content
+* -t or --type, template type 
 
 ## Generating Projects
 **clint** is able to generate projects based on user defined templates. As of version `0.2.1` these templates are defined using json and need to be formated in the following way.
