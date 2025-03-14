@@ -1,28 +1,31 @@
 # clint
 My homemade CLI tool **clint** (CLI-n-tool).
 
+Most up-to-date version is `0.3.0`
+
 ## Arguments
-As of version `0.2.1` there are 3 main arguments
-*  pg
-*  sg
+As of version `0.3.0` there are 4 main arguments
+*  mp
+*  ms
 *  mg
+*  mt
 
 If none of the arguments are given the additional arguments, the user will be prompted for them instead.
 
-### pg
-pg or project generation, is the keyword for generating projects using user defined templates
+### mp
+mp or project generation, is the keyword for generating projects using user defined templates
 
-#### pg additional args
+#### mp additional args
 *  -n, name
 *  -l, language
 *  --git, initializing git repository
 *  --venv, creating a virtual enviornment (note only for python as of now)
 
 
-### sg
-sg or script generation, is the keyword for generating a template script file (.sh or .bat depending on operating system).
+### ms
+ms or script generation, is the keyword for generating a template script file (.sh or .bat depending on operating system).
 
-#### sg additional args
+#### ms additional args
 * -n, name
 
 ### mg
@@ -30,6 +33,11 @@ mg or make global, makes a script of choice global by adding to either system $P
 
 ### mg additional args
 * -n, name
+  
+### mt
+mt or make template, allows the user to make a template either for projects or scripts. This all happens in the command line for now (as of version `0.3.0`). 
+
+For future feature, im planning on adding a argument that allows the user to "upload" their own template so they don't have to use the command line.
 
 ## Generating Projects
 **clint** is able to generate projects based on user defined templates. As of version `0.2.1` these templates are defined using json and need to be formated in the following way.
@@ -54,9 +62,8 @@ After that you have `name` which is the name of the file plus the extension of t
 
 The sections where you define the file and the content, you can add more than one depending on how many files you want part of the project.
 
-**As of version `0.2.1`, all the files defined in the templates are put in the same directory**
 
-### Example of template
+### Example from projects template
 This is an example of the default python template
 ~~~json
 {
@@ -79,4 +86,14 @@ This is an example of the default python template
 ## Generating Scripts
 **clint** is able to generate a script based on a user defined template, either .sh or .bat depending on the operating system.
 
-The template is similar to the generating project template but there is no `numOfFiles`.
+The template is similar to the generating project template but there is no `numOfFiles` and no `name` attribute.
+
+There is just a `content` section as the file name is the `name`.
+
+### Example of script template
+
+~~~json
+{
+    "content" : "Content of the template here"
+}
+~~~

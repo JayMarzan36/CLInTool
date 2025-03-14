@@ -1,5 +1,5 @@
 import os
-from .scriptGen import getPlatform
+from .makeScript import getPlatform
 
 
 def makeScriptGlobal(scriptName: str) -> None:
