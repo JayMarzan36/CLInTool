@@ -7,16 +7,15 @@ def makeTemplate(name: str, templateType: str) -> None:
     Create a template main function
 
     Args:
-        name (str): _description_
-        content (str): _description_
-        templateType (str): _description_
+        name (str): name of template
+        content (str): content of template
+        templateType (str): project or script template
     """
-    # Get the current script directory
-    current_dir = os.path.dirname(os.path.abspath(__file__))
+    currentDir = os.path.dirname(os.path.abspath(__file__))
 
     acceptedTypes = {
-        "script": os.path.join(current_dir, "../scripting/templates"),
-        "project": os.path.join(current_dir, "../projectGen/templates"),
+        "script": os.path.join(currentDir, "../scripting/templates"),
+        "project": os.path.join(currentDir, "../makeProject/templates"),
     }
 
     if templateType in acceptedTypes:
@@ -28,7 +27,6 @@ def makeTemplate(name: str, templateType: str) -> None:
             finalTemplate["content"] = content
 
         elif templateType == "project":
-
             numOfFiles = int(input("Number of files: "))
 
             finalTemplate["files"] = []
@@ -51,6 +49,7 @@ def makeTemplate(name: str, templateType: str) -> None:
 
     else:
         print(f"\033[91mType {templateType} not supported\033[0m")
+
         return
 
 

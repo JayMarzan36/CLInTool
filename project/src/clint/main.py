@@ -3,6 +3,7 @@ import argparse
 from .makeProject import makeProject
 from .scripting import makeScript, makeGlobal
 from .templateManagement import makeTemplates
+from .templateManagement import addTemplate
 
 
 def main() -> None:
@@ -51,6 +52,17 @@ def main() -> None:
         "-t", "--type", choices=["script", "project"], help="Template type"
     )
 
+    # add Template
+    addTemplateParser = subparser.add_parser("at")
+    
+    addTemplateParser.add_argument("-n", "--name", help="Template name")
+
+    addTemplateParser.add_argument("-p", "--path", help="Template path")
+
+    addTemplateParser.add_argument(
+        "-t", "--type", choices=["script", "project"], help="Template type"
+    )
+
     args = parser.parse_args()
 
     if args.command == "mp":
@@ -80,6 +92,13 @@ def main() -> None:
 
         else:
             makeTemplates.interactiveMode()
+
+    elif args.command == "at":
+        if args.path and args.type and args.name:
+            addTemplate(args.name, args.path, args.type)
+
+        else:
+            addTemplate.interactiveMode()
 
     else:
         parser.print_help()

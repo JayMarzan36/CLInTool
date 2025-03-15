@@ -9,10 +9,10 @@ def loadTemplate(templateType: str) -> dict:
     Load a template
 
     Args:
-        templateType (str): _description_
+        templateType (str): name of template
 
     Returns:
-        dict: _description_
+        dict: contents of template
     """
     try:
         finalTemplate = {}
@@ -43,13 +43,13 @@ def createProject(name: str, templateType: str, git: bool, venv: bool) -> None:
     Create a project
 
     Args:
-        name (str): _description_
-        templateType (str): _description_
-        git (bool): _description_
-        venv (bool): _description_
+        name (str): name of project
+        templateType (str): language or template name
+        git (bool): make git repository
+        venv (bool): make virtual environment
 
     Returns:
-        _type_: _description_
+        _type_: None
     """
     projectPath = os.path.join(os.getcwd(), name)
 

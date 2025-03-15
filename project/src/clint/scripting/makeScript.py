@@ -8,7 +8,7 @@ def getPlatform() -> str:
     Get the current platform
 
     Returns:
-        str: _description_
+        str: platform (os)
     """
     return platform.system().lower()
 
@@ -17,10 +17,10 @@ def loadTemplate(fileType: str) -> dict:
     """
     Load a template
     Args:
-        fileType (str): _description_
+        fileType (str): file extension
 
     Returns:
-        dict: _description_
+        dict: template contents
     """
     try:
         fileType = fileType.replace(".", "")
@@ -43,10 +43,10 @@ def scriptGen(name: str, templateType: str) -> None:
     Generate script
 
     Args:
-        name (str): _description_
+        name (str): name of script
 
     Raises:
-        Exception: _description_
+        Exception: any error that occurs
     """
     platforms = {
         "windows": ".bat",

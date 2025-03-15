@@ -1,14 +1,15 @@
 # clint
 My homemade CLI tool **clint** (CLI-n-tool).
 
-Most up-to-date version is `0.3.0`
+Most up-to-date version is `0.4.0`
 
 ## Arguments
-As of version `0.3.0` there are 4 main arguments
+As of version `0.4.0` there are 4 main arguments
 *  mp
 *  ms
 *  mg
 *  mt
+*  at
 
 If none of the arguments are given the additional arguments, the user will be prompted for them instead.
 
@@ -35,14 +36,20 @@ mg or make global, makes a script of choice global by adding to either system $P
 * -n, name
   
 ### mt
-mt or make template, allows the user to make a template either for projects or scripts. This all happens in the command line for now (as of version `0.3.0`). 
-
-**For future feature, im planning on adding a argument that allows the user to "upload" their own template so they don't have to use the command line.**
+mt or make template, allows the user to make a template either for projects or scripts.
 
 #### mt additional args
 * -n, name
 * -c, content
-* -t or --type, template type 
+* -t or --type, template type
+
+### at
+at or add template, allows the user to add a template without having to use the command line.
+
+#### at additional args
+* -n, name
+* -p, path
+* -t, --type, template type
 
 ## Generating Projects
 **clint** is able to generate projects based on user defined templates. As of version `0.2.1` these templates are defined using json and need to be formated in the following way.
