@@ -109,3 +109,6 @@ There is just a `content` section as the file name is the `name`.
     "content" : "Content of the template here"
 }
 ~~~
+
+# To-do
+Change template strucutre to be able to specify and make directories
