@@ -1,15 +1,16 @@
 # clint
 My homemade CLI tool **clint** (CLI-n-tool).
 
-Most up-to-date version is `0.5.0`
+Most up-to-date version is `0.5.1`
 
 ## Arguments
-As of version `0.4.0` there are 4 main arguments
+As of version `0.5.1` there are 4 main arguments
 *  mp
 *  ms
 *  mg
 *  mt
 *  at
+*  v
 
 If none of the arguments are given the additional arguments, the user will be prompted for them instead.
 
@@ -51,49 +52,61 @@ at or add template, allows the user to add a template without having to use the 
 * -p, path
 * -t, --type, template type
 
+### v
+v prints out the current version of clint
+
 ## Generating Projects
-**clint** is able to generate projects based on user defined templates. As of version `0.2.1` these templates are defined using json and need to be formated in the following way.
+**clint** is able to generate projects based on user defined templates. As of version `0.5.1` these templates are defined using json and need to be formated in the following way.
 
 ~~~json
 {
-  "files" : [
+  "file" : 
     {
-      "numOfFiles" : # Number of files that are part of the project template
+      "name" : # Name of the file including the extension
     },
     {
-      "name" : # Name of the file including the extension,
-      "content" : # Content of the file
+      "content" : # Content of the file or path to local file
     }
-  ]
 }
 ~~~
 
-In the `numOfFiles` section this is where you put the number of files that are part of the project template, represented as a integar.
+After that you have `fileName` which is the name of the file plus the extension of the file. And part of this section is the `content` section where you put the content of the file.
 
-After that you have `name` which is the name of the file plus the extension of the file. And part of this section is the `content` section where you put the content of the file.
+As of version `0.5.1` you can now specify directories.
 
-The sections where you define the file and the content, you can add more than one depending on how many files you want part of the project.
-
-
-### Example from projects template
-This is an example of the default python template
+Example
 ~~~json
 {
-    "files": [
+    "dir": [
         {
-            "numOfFiles" : 2
+            "dirName": "src"
         },
         {
-            "name": "main.py",
-            "content": "def main() -> None:\n   pass\n\nif __name__ == '__main__':\n    main()"
+            "dirContents": {
+                "file": [
+                    {
+                        "fileName": "main.py"
+                    },
+                    {
+                        "content": "testContent.py"
+                    }
+                ]
+            }
+        }
+    ],
+    "file": [
+        {
+            "fileName": "setup.py"
         },
         {
-            "name": "requirements.txt",
-            "content": "requirements of project"
+            "content": "#HI"
         }
     ]
 }
 ~~~
+
+For making directories in the templates, you specify the name of the directoy with `dirName` and the contents with `dirContents`. In `dirContents` you can specify more directories or files.
+
 
 ## Generating Scripts
 **clint** is able to generate a script based on a user defined template, either .sh or .bat depending on the operating system.
