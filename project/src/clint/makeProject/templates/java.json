@@ -1,15 +1,8 @@
 {
-    "files": [
+    "file": [
         {
-            "numOfFiles" : 2
-        },
-        {
-            "name": "Main.java",
+            "fileName": "Main.java",
             "content": "public class Main {\n  public static void main(String[] args) {\n  System.out.println('hello world');\n    }\n}"
-        },
-        {
-            "name": "requirements.txt",
-            "content": "requirements of project"
         }
     ]
 }

@@ -1,7 +1,7 @@
 # clint
 My homemade CLI tool **clint** (CLI-n-tool).
 
-Most up-to-date version is `0.4.0`
+Most up-to-date version is `0.5.0`
 
 ## Arguments
 As of version `0.4.0` there are 4 main arguments
