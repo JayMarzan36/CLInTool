@@ -71,6 +71,7 @@ class Template:
                                     with open(prevFile, "w") as f:
                                         f.write(content)
                                 else:
+                                    print(f"Using content from template")
                                     with open(prevFile, "w") as f:
                                         f.write(item["content"])
                     else:

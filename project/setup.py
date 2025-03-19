@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 def getVersion() -> str:
-    return "0.5.0"
+    return "0.5.1"
 
 setup(
     name= 'clint',

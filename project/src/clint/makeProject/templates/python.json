@@ -1,7 +1,9 @@
 {
     "file": [
         {
-            "fileName": "main.py",
+            "fileName": "main.py"
+        },
+        {
             "content": "def main() -> None:\n   pass\n\nif __name__ == '__main__':\n    main()"
         }
     ]

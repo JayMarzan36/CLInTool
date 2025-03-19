@@ -56,9 +56,7 @@ def createProject(
 
     os.makedirs(projectPath, exist_ok=True)
 
-    os.makedirs(os.path.join(projectPath, "src"), exist_ok=True)
-
-    projectPath = os.path.join(projectPath, "src")
+    os.chdir(projectPath)  # Change directory to project root
 
     if useLocalTemplate and templatePath:
         templateSourcePath = templatePath
@@ -75,14 +73,13 @@ def createProject(
         print(
             f"\033[91mTemplate for {lang} not found. Could not generate project\033[0m"
         )
-
         return
 
     if git:
-        os.system(f"cd {projectPath} && git init")
+        os.system("git init")  # No need for cd since we're already in project dir
 
     if venv == "python" and "python" in lang:
-        os.system(f"python -m venv {os.path.join(projectPath, 'venv')}")
+        os.system(f"python -m venv venv")  # Create venv in project root
 
     print(f"Project \033[92m{name}\033[0m created at \033[92m{projectPath}\033[0m")
 
@@ -103,6 +100,23 @@ def interactiveMode() -> None:
 
     if useLocalTemplate:
         templatePath = input("Enter template path: ")
+    else:
+        templates = os.listdir(TEMPLATESPATH)
+
+        print("\nAvailable templates:")
+
+        for i, template in enumerate(templates, 1):
+            print(f"{i}. {template}")
+
+        template_choice = int(input("\nSelect template number: ")) - 1
+
+        if 0 <= template_choice < len(templates):
+            lang = templates[template_choice]
+
+        else:
+            print("\033[91mInvalid template selection\033[0m")
+
+            return
 
     git = input("Initialize git repository? (y/n): ").lower() == "y"
 

@@ -5,8 +5,7 @@ from .scripting import makeScript, makeGlobal
 from .templateManagement import makeTemplates
 from .templateManagement import addTemplate
 
-
-def main(version :str ="0.5.0") -> None:
+def main(version :str ="0.5.1") -> None:
     """
     Clint main function
     """
