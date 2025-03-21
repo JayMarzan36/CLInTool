@@ -1,6 +1,7 @@
 import os
 
 from ..templateManagement.Template import Template
+from ..templateManagement.addTemplate import addTemplate
 
 TEMPLATESPATH = os.path.join(os.path.dirname(__file__), "templates")
 
@@ -35,8 +36,6 @@ def createProject(
     lang: str,
     git: bool,
     venv: bool,
-    useLocalTemplate: bool = False,
-    templatePath: str = None,
 ) -> None:
     """
     Create a project
@@ -46,8 +45,6 @@ def createProject(
         lang (str): programming language
         git (bool): make git repository
         venv (bool): make virtual environment
-        useLocalTemplate (bool): use local template instead of built-in
-        templatePath (str): path to local template if useLocalTemplate is True
 
     Returns:
         _type_: None
@@ -58,21 +55,14 @@ def createProject(
 
     os.chdir(projectPath)  # Change directory to project root
 
-    if useLocalTemplate and templatePath:
-        templateSourcePath = templatePath
-
-    else:
-        templateSourcePath = loadTemplate(lang)
-
-    if templateSourcePath:
-        templateClass = Template(path=templateSourcePath)
+    try:
+        templatePath = loadTemplate(lang)
+        templateClass = Template(path=templatePath)
 
         templateClass.makeFromTemplate()
 
-    elif templateSourcePath is None:
-        print(
-            f"\033[91mTemplate for {lang} not found. Could not generate project\033[0m"
-        )
+    except Exception as e:
+        print(f"\033[91mCould not generate project, template error\033[0m")
         return
 
     if git:
@@ -92,37 +82,38 @@ def interactiveMode() -> None:
 
     name = input("Enter project name: ")
 
-    lang = input("Enter project language: ")
-
     useLocalTemplate = input("Use local template? (y/n): ").lower() == "y"
 
     templatePath = None
 
     if useLocalTemplate:
+        templateName = input("Template Name: ")
         templatePath = input("Enter template path: ")
+
+        addTemplate(templateName, templatePath, templateType="project")
+
+    templates = os.listdir(TEMPLATESPATH)
+
+    print("\nAvailable templates:")
+
+    for i, template in enumerate(templates, 1):
+        print(f"{i}. {template}")
+
+    template_choice = int(input("\nSelect template number: ")) - 1
+
+    if 0 <= template_choice < len(templates):
+        lang = templates[template_choice]
+
     else:
-        templates = os.listdir(TEMPLATESPATH)
+        print("\033[91mInvalid template selection\033[0m")
 
-        print("\nAvailable templates:")
-
-        for i, template in enumerate(templates, 1):
-            print(f"{i}. {template}")
-
-        template_choice = int(input("\nSelect template number: ")) - 1
-
-        if 0 <= template_choice < len(templates):
-            lang = templates[template_choice]
-
-        else:
-            print("\033[91mInvalid template selection\033[0m")
-
-            return
+        return
 
     git = input("Initialize git repository? (y/n): ").lower() == "y"
 
     venv = input("Create virtual environment? (y/n): ").lower() == "y"
 
-    createProject(name, lang, git, venv, useLocalTemplate, templatePath)
+    createProject(name, lang, git, venv)
 
 
 def main() -> None:

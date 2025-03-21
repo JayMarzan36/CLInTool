@@ -5,7 +5,8 @@ from .scripting import makeScript, makeGlobal
 from .templateManagement import makeTemplates
 from .templateManagement import addTemplate
 
-def main(version :str ="0.5.1") -> None:
+
+def main(version: str = "0.5.2") -> None:
     """
     Clint main function
     """
@@ -51,7 +52,7 @@ def main(version :str ="0.5.1") -> None:
     makeTemplatesParser.add_argument("-c", "--content", help="Template content")
 
     makeTemplatesParser.add_argument(
-        "-t", "--type", choices=["script", "project"], help="Template type"
+        "-t", "--type", choices=["script"], help="Template type"
     )
 
     # add Template

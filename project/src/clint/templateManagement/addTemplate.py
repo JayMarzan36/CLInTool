@@ -52,7 +52,7 @@ def interactiveMode() -> None:
     print("Add a template")
 
     templateName = input("Template Name: ")
-    
+
     templatePath = input("Template path: ")
 
     templateType = input("Template Type (script or project): ")

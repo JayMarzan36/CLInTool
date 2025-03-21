@@ -15,7 +15,6 @@ def makeTemplate(name: str, templateType: str) -> None:
 
     acceptedTypes = {
         "script": os.path.join(currentDir, "../scripting/templates"),
-        "project": os.path.join(currentDir, "../makeProject/templates"),
     }
 
     if templateType in acceptedTypes:
@@ -25,22 +24,6 @@ def makeTemplate(name: str, templateType: str) -> None:
             content = input("Content: ")
 
             finalTemplate["content"] = content
-
-        elif templateType == "project":
-            numOfFiles = int(input("Number of files: "))
-
-            finalTemplate["files"] = []
-
-            finalTemplate["files"].append({"numOfFiles": numOfFiles})
-
-            for i in range(numOfFiles):
-                currentFileName = input(f"File {i+1} name: ")
-
-                currentFileContent = input(f"File {i+1} content: ")
-
-                finalTemplate["files"].append(
-                    {"name": currentFileName, "content": currentFileContent}
-                )
 
         with open(f"{acceptedTypes[templateType]}/{name}.json", "w") as f:
             json.dump(finalTemplate, f)
