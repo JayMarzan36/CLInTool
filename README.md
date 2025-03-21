@@ -1,7 +1,7 @@
 # clint
-My homemade CLI tool **clint** (CLI-n-tool).
+My homemade CLI tool **clint**.
 
-Most up-to-date version is `0.5.1`
+Most up-to-date version is `0.5.2`
 
 ## Arguments
 As of version `0.5.1` there are 4 main arguments
